@@ -5,6 +5,7 @@ import com.ultrapaint.constants.ToolID;
 
 import javafx.scene.canvas.GraphicsContext;
 
+
 public class BrushTool extends Tool {
     double prevX = 0, prevY = 0;
 
@@ -18,6 +19,7 @@ public class BrushTool extends Tool {
         app.currentTool = ToolID.BRUSH;
 
         app.canvasPane.setOnMousePressed(e -> {
+
             prevX = e.getX();
             prevY = e.getY();
 

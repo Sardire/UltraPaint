@@ -31,9 +31,10 @@ public class EraserTool extends Tool {
 
         app.canvasPane.setOnMousePressed(e -> {
             app.canvas.requestFocus();
+            app.gc.setFill(Color.WHITE);
             prevX = e.getX();
             prevY = e.getY();
-            app.gc.fillRect(e.getX() - app.currentEraserSize/2, e.getY() - app.currentEraserSize/2, app.currentEraserSize, app.currentEraserSize);
+            app.gc.clearRect(e.getX() - app.currentEraserSize/2, e.getY() - app.currentEraserSize/2, app.currentEraserSize, app.currentEraserSize);
         });
 
         app.canvasPane.setOnMouseMoved(e -> {
@@ -58,7 +59,7 @@ public class EraserTool extends Tool {
             eraserPreview.setHeight(app.currentEraserSize);
             eraserPreview.setX(x - app.currentEraserSize / 2);
             eraserPreview.setY(y - app.currentEraserSize / 2);
-            app.gc.fillRect(e.getX() - app.currentEraserSize/2, e.getY() - app.currentEraserSize/2, app.currentEraserSize, app.currentEraserSize);
+            app.gc.clearRect(e.getX() - app.currentEraserSize/2, e.getY() - app.currentEraserSize/2, app.currentEraserSize, app.currentEraserSize);
 
             // Sử dụng nội suy tuyến tính để xóa các điểm giữa hai vị trí chuột
             double dist = Math.hypot(x - prevX, y - prevY);
@@ -67,7 +68,7 @@ public class EraserTool extends Tool {
                 double t = (double)i / steps;
                 double ix = prevX + t * (x - prevX);
                 double iy = prevY + t * (y - prevY);
-                app.gc.fillRect(ix - app.currentEraserSize/2, iy - app.currentEraserSize/2, app.currentEraserSize, app.currentEraserSize);
+                app.gc.clearRect(ix - app.currentEraserSize/2, iy - app.currentEraserSize/2, app.currentEraserSize, app.currentEraserSize);
             }
 
             prevX = x;
