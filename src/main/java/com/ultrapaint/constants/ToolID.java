@@ -6,7 +6,8 @@ import org.kordamp.ikonli.fontawesome5.FontAwesomeSolid;
 public enum ToolID {
     BRUSH(0),
     ERASER(1),
-    COLOR(2);
+    COLOR(2),
+    SHAPER(3);
 
     private final int id;
     private final FontIcon fontIcon;

@@ -1,22 +1,23 @@
-package com.ultrapaint.ui;
+package com.ultrapaint.ui.textfield;
 
 import javafx.scene.control.*;
 import javafx.scene.control.TextFormatter.Change;
 import java.util.function.UnaryOperator;
 import com.ultrapaint.App;
 
-public class IntTextField extends TextField {
-    public IntTextField(App app, String text) {
+public class BaseTF extends TextField {
+    String pattern = "\\d*(\\.\\d{0,1})?";
+    public BaseTF(App app, String text) {
         super();
         this.setPromptText(text);
-        UnaryOperator<Change> integerFilter = change -> {
+        UnaryOperator<Change> filter = change -> {
             String newText = change.getControlNewText();
-            if (newText.matches("\\d*")) {
+            if (newText.matches(pattern)) {
                 return change;
             }
             return null;
         };
         this.setMaxWidth(40);
-        this.setTextFormatter(new TextFormatter<>(integerFilter));
+        this.setTextFormatter(new TextFormatter<>(filter));
     }
 }

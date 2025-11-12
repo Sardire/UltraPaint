@@ -1,10 +1,10 @@
-package com.ultrapaint.ui;
+package com.ultrapaint.ui.box;
 
 import javafx.scene.control.*;
 import com.ultrapaint.App;
 
-public class UMenuBar extends MenuBar {
-    public UMenuBar(App app) {
+public class UMenuBox extends MenuBar {
+    public UMenuBox(App app) {
         MenuItem newButton = new MenuItem("New");
         MenuItem saveButton = new MenuItem("Save");
         MenuItem openButton = new MenuItem("Open");

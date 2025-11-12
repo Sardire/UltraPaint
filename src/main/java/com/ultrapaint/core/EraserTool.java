@@ -1,28 +1,20 @@
 package com.ultrapaint.core;
 
-
-
 import com.ultrapaint.App;
 import com.ultrapaint.constants.ToolID;
 
+import com.ultrapaint.core.toolpreview.EraserPreview;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class EraserTool extends Tool {
     private double prevX = 0, prevY = 0, x, y;
     private final double ERASER_PACE = 0.5;
-    public Rectangle eraserPreview = new Rectangle(0, 0, 0, 0);
+    public EraserPreview eraserPreview;
 
     public EraserTool(App app) {
         super();
-
-        eraserPreview.setStrokeWidth(1);
-        eraserPreview.setWidth(app.currentEraserSize);
-        eraserPreview.setHeight(app.currentEraserSize);
-        eraserPreview.setFill(Color.WHITE);
-        eraserPreview.setStroke(Color.BLACK);
-        eraserPreview.setVisible(false);
-        app.canvasPane.getChildren().add(eraserPreview);
+        eraserPreview = new EraserPreview(app);
     }
     
     @Override
@@ -39,26 +31,18 @@ public class EraserTool extends Tool {
 
         app.canvasPane.setOnMouseMoved(e -> {
             app.canvas.requestFocus();
-            x = e.getX();
-            y = e.getY();
-            if (y < 0) eraserPreview.setVisible(false);
-            else{
-                eraserPreview.setVisible(true);
-                eraserPreview.setWidth(app.currentEraserSize);
-                eraserPreview.setHeight(app.currentEraserSize);
-                eraserPreview.setX(x - app.currentEraserSize / 2);
-                eraserPreview.setY(y - app.currentEraserSize / 2);
-            }
+            if (e.getY() < 0) eraserPreview.setVisible(false);
+            else eraserPreview.setOnMoved(app, e.getX(), e.getY());
         });
 
         app.canvasPane.setOnMouseDragged(e -> {
             app.canvas.requestFocus();
             x = e.getX();
             y = e.getY();
-            eraserPreview.setWidth(app.currentEraserSize);
-            eraserPreview.setHeight(app.currentEraserSize);
-            eraserPreview.setX(x - app.currentEraserSize / 2);
-            eraserPreview.setY(y - app.currentEraserSize / 2);
+
+            if (y < 0) eraserPreview.setVisible(false);
+            else eraserPreview.setOnDragged(app, x, y);
+
             app.gc.clearRect(e.getX() - app.currentEraserSize/2, e.getY() - app.currentEraserSize/2, app.currentEraserSize, app.currentEraserSize);
 
             // Sử dụng nội suy tuyến tính để xóa các điểm giữa hai vị trí chuột
