@@ -2,7 +2,6 @@ package com.ultrapaint.ui.button;
 
 import com.ultrapaint.App;
 import com.ultrapaint.constants.ShapeID;
-import com.ultrapaint.constants.ToolID;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 
@@ -33,7 +32,7 @@ public class UShaperButton extends UButton{
         rectangle.setStrokeWidth(1);
         this.setGraphic(rectangle);
         this.setOnMouseClicked(e -> {
-            app.shaperTool.setShape(app, ShapeID.RECTANGLE);
+            app.shaperTool.setShape(ShapeID.RECTANGLE);
             app.shaperTool.setBehavior(app);
         });
     }
@@ -43,7 +42,7 @@ public class UShaperButton extends UButton{
         line.setFill(Color.BLACK);
         this.setGraphic(line);
         this.setOnMouseClicked(e -> {
-            app.shaperTool.setShape(app, ShapeID.LINE);
+            app.shaperTool.setShape(ShapeID.LINE);
             app.shaperTool.setBehavior(app);
         });
     }
@@ -55,7 +54,7 @@ public class UShaperButton extends UButton{
         circle.setStrokeWidth(1);
         this.setGraphic(circle);
         this.setOnMouseClicked(e -> {
-            app.shaperTool.setShape(app, ShapeID.ELLIPSE);
+            app.shaperTool.setShape(ShapeID.ELLIPSE);
             app.shaperTool.setBehavior(app);
         });
     }
