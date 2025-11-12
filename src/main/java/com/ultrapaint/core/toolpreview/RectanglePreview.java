@@ -2,9 +2,7 @@ package com.ultrapaint.core.toolpreview;
 
 import com.ultrapaint.App;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
 
 public class RectanglePreview extends Preview {
     double prevX, prevY;
@@ -45,8 +43,8 @@ public class RectanglePreview extends Preview {
     }
 
     public void setCoordinate(double endX, double endY){
-        rectanglePreview.setX(prevX);
-        rectanglePreview.setY(prevY);
+        rectanglePreview.setX(Math.min(prevX, endX));
+        rectanglePreview.setY(Math.min(prevY, endY));
         rectanglePreview.setWidth(Math.abs(prevX - endX));
         rectanglePreview.setHeight(Math.abs(prevY - endY));
     }
