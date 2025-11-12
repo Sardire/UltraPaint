@@ -14,7 +14,7 @@ public class LinePreview extends Preview{
     public void setOnPressed(App app, double x, double y) {
         prevX = x;
         prevY = y;
-        linePreview.setStrokeWidth(app.currentEdgeSize);
+        linePreview.setStrokeWidth(app.currentLineSize);
         linePreview.setStroke(app.currentColor);
         linePreview.setVisible(true);
         setCoordinate(linePreview, x, y, x, y);
@@ -34,7 +34,7 @@ public class LinePreview extends Preview{
     public void setOnReleased(App app, double x, double y) {
         linePreview.setVisible(false);
         app.gc.setStroke(app.currentColor);
-        app.gc.setLineWidth(app.currentEdgeSize);
+        app.gc.setLineWidth(app.currentLineSize);
         app.gc.strokeLine(prevX, prevY, x, y);
     }
 

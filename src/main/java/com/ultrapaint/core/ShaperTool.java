@@ -7,7 +7,6 @@ import com.ultrapaint.core.toolpreview.EllipsePreview;
 import com.ultrapaint.core.toolpreview.LinePreview;
 import com.ultrapaint.core.toolpreview.Preview;
 import com.ultrapaint.core.toolpreview.RectanglePreview;
-import javafx.scene.shape.Shape;
 
 public class ShaperTool extends Tool{
     Preview shapePreview;
@@ -29,26 +28,20 @@ public class ShaperTool extends Tool{
 
         app.canvasPane.setOnMousePressed(e -> {
             app.canvas.requestFocus();
-            app.gc.setLineWidth(app.currentEdgeSize);
+            app.gc.setLineWidth(app.currentLineSize);
             startX = e.getX();
             startY = e.getY();
             shapePreview.setOnPressed(app, startX, startY);
         });
 
-        app.canvasPane.setOnMouseMoved(e -> {
-            shapePreview.setOnMoved(app, e.getX(), e.getY());
-        });
+        app.canvasPane.setOnMouseMoved(e -> shapePreview.setOnMoved(app, e.getX(), e.getY()));
 
-        app.canvasPane.setOnMouseDragged(e -> {
-            shapePreview.setOnDragged(app, e.getX(), e.getY());
-        });
+        app.canvasPane.setOnMouseDragged(e -> shapePreview.setOnDragged(app, e.getX(), e.getY()));
 
-        app.canvasPane.setOnMouseReleased(e -> {
-            shapePreview.setOnReleased(app, e.getX(), e.getY());
-        });
+        app.canvasPane.setOnMouseReleased(e -> shapePreview.setOnReleased(app, e.getX(), e.getY()));
     }
 
-    public void setShape(App app, ShapeID s){
+    public void setShape(ShapeID s){
         switch (s){
             case ShapeID.RECTANGLE:
                 shapePreview = rectanglePreview;

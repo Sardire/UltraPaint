@@ -18,6 +18,7 @@ public class RectanglePreview extends Preview {
         prevY = y;
         rectanglePreview.setStroke(app.currentColor);
         rectanglePreview.setFill(Color.TRANSPARENT);
+        rectanglePreview.setStrokeWidth(app.currentLineSize);
         rectanglePreview.setVisible(true);
     }
 
@@ -33,7 +34,7 @@ public class RectanglePreview extends Preview {
     public void setOnReleased(App app, double x, double y){
         rectanglePreview.setVisible(false);
         app.gc.setStroke(app.currentColor);
-        app.gc.setLineWidth(app.currentEdgeSize);
+        app.gc.setLineWidth(app.currentLineSize);
         app.gc.strokeRect(Math.min(prevX, x), Math.min(prevY, y), Math.abs(x - prevX), Math.abs(y - prevY));
     }
 

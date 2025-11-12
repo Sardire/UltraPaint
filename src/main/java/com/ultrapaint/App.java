@@ -42,7 +42,7 @@ public class App extends Application
 
     public double currentBrushSize = 5;
     public double currentEraserSize = 10;
-    public double currentEdgeSize = 1;
+    public double currentLineSize = 1;
     public ToolID currentTool = ToolID.BRUSH;
     public final GraphicsContext gc = canvas.getGraphicsContext2D();
     public Rectangle eraserPreview = new Rectangle(0, 0, 0, 0);

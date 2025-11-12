@@ -2,6 +2,7 @@ package com.ultrapaint.ui.box;
 
 import com.ultrapaint.constants.ShapeID;
 import com.ultrapaint.ui.button.UShaperButton;
+import com.ultrapaint.ui.textfield.LineSizeTF;
 import javafx.scene.layout.HBox;
 import com.ultrapaint.App;
 import javafx.scene.layout.VBox;
@@ -24,5 +25,8 @@ public class UShaperBox extends HBox {
             UShaperButton shapeButton = new UShaperButton(app, shapeList[i]);
             currentVBox.getChildren().add(shapeButton);
         }
+
+        VBox v = new VBox(new LineSizeTF(app, "Size"));
+        this.getChildren().add(v);
     }
 }
