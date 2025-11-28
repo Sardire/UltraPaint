@@ -37,6 +37,11 @@
         <artifactId>javafx-fxml</artifactId>
         <version>${javafx.version}</version>
     </dependency>
+      <dependency>
+          <groupId>org.openjfx</groupId>
+          <artifactId>javafx-swing</artifactId>
+          <version>${javafx.version}</version>
+      </dependency>
 
     <!-- https://mvnrepository.com/artifact/org.kordamp.ikonli/ikonli-core -->
     <dependency>
