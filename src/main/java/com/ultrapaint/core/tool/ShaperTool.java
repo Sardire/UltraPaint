@@ -1,4 +1,4 @@
-package com.ultrapaint.core;
+package com.ultrapaint.core.tool;
 
 import com.ultrapaint.App;
 import com.ultrapaint.constants.ShapeID;
@@ -8,7 +8,7 @@ import com.ultrapaint.core.toolpreview.LinePreview;
 import com.ultrapaint.core.toolpreview.Preview;
 import com.ultrapaint.core.toolpreview.RectanglePreview;
 
-public class ShaperTool extends Tool{
+public class ShaperTool extends Tool {
     Preview shapePreview;
     RectanglePreview rectanglePreview;
     LinePreview linePreview;
@@ -27,7 +27,7 @@ public class ShaperTool extends Tool{
         app.currentTool = ToolID.SHAPER;
 
         app.canvasPane.setOnMousePressed(e -> {
-            app.canvas.requestFocus();
+            app.mainCanva.requestFocus();
             app.gc.setLineWidth(app.currentLineSize);
             startX = e.getX();
             startY = e.getY();
@@ -38,7 +38,16 @@ public class ShaperTool extends Tool{
 
         app.canvasPane.setOnMouseDragged(e -> shapePreview.setOnDragged(app, e.getX(), e.getY()));
 
-        app.canvasPane.setOnMouseReleased(e -> shapePreview.setOnReleased(app, e.getX(), e.getY()));
+        app.canvasPane.setOnMouseReleased(e -> {
+            shapePreview.setOnReleased(app, e.getX(), e.getY());
+            app.stateManager.takeSnapshot();
+        });
+
+        app.canvasPane.setOnMouseExited(e -> {
+        });
+
+        app.canvasPane.setOnMouseEntered(e -> {
+        });
     }
 
     public void setShape(ShapeID s){

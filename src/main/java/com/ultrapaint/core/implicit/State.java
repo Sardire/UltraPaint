@@ -1,4 +1,4 @@
-package com.ultrapaint.core;
+package com.ultrapaint.core.implicit;
 
 import javafx.scene.image.WritableImage;
 

@@ -10,11 +10,11 @@ import javafx.scene.layout.*;
 
 public class UEraserBox extends VBox {
     public UEraserBox(App app){
-        super(new UEraserButton(app), new EraserSizeTF(app, "Size"));
+        super(new UEraserButton(app));
         HBox label = new HBox(new Label("Eraser"));
         label.setAlignment(Pos.CENTER);
         Region spacer = new Region();
         VBox.setVgrow(spacer, Priority.ALWAYS);
-        this.getChildren().addAll(spacer, label);
+        this.getChildren().addAll(spacer,new EraserSizeTF(app, "Size"), label);
     }
 }

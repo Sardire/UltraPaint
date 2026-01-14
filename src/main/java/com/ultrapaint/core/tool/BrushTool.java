@@ -1,4 +1,4 @@
-package com.ultrapaint.core;
+package com.ultrapaint.core.tool;
 
 import com.ultrapaint.App;
 import com.ultrapaint.constants.ToolID;
@@ -15,7 +15,7 @@ public class BrushTool extends Tool {
 
     @Override
     public void setBehavior(App app) {
-        GraphicsContext gc = app.canvas.getGraphicsContext2D();
+        GraphicsContext gc = app.mainCanva.getGraphicsContext2D();
         app.currentTool = ToolID.BRUSH;
 
         app.canvasPane.setOnMousePressed(e -> {
@@ -29,7 +29,7 @@ public class BrushTool extends Tool {
         });
 
         app.canvasPane.setOnMouseMoved(e -> {
-            app.canvas.requestFocus();
+            app.mainCanva.requestFocus();
         });
 
         app.canvasPane.setOnMouseDragged(e -> {
@@ -40,6 +40,16 @@ public class BrushTool extends Tool {
 
             prevX = x;
             prevY = y;
+        });
+
+        app.canvasPane.setOnMouseReleased(e -> {
+            app.stateManager.takeSnapshot();
+        });
+
+        app.canvasPane.setOnMouseExited(e -> {
+        });
+
+        app.canvasPane.setOnMouseEntered(e -> {
         });
     }
 }

@@ -7,7 +7,9 @@ public enum ToolID {
     BRUSH(0),
     ERASER(1),
     COLOR(2),
-    SHAPER(3);
+    SHAPER(3),
+    BUCKET(4),
+    COLORPICKER(5);
 
     private final int id;
     private final FontIcon fontIcon;
@@ -17,6 +19,8 @@ public enum ToolID {
         switch (this) {
             case BRUSH -> this.fontIcon = new FontIcon(FontAwesomeSolid.PAINT_BRUSH);
             case ERASER -> this.fontIcon = new FontIcon(FontAwesomeSolid.ERASER);
+            case BUCKET -> this.fontIcon = new FontIcon(FontAwesomeSolid.FILL_DRIP);
+            case COLORPICKER -> this.fontIcon = new FontIcon(FontAwesomeSolid.EYE_DROPPER);
             default -> this.fontIcon = null;
         }
     }

@@ -2,28 +2,52 @@ package com.ultrapaint.ui;
 
 import com.ultrapaint.App;
 
-import com.ultrapaint.ui.box.UBrushBox;
-import com.ultrapaint.ui.box.UColorBox;
-import com.ultrapaint.ui.box.UEraserBox;
-import com.ultrapaint.ui.box.UShaperBox;
+import com.ultrapaint.ui.box.*;
 
 import javafx.scene.control.Separator;
 import javafx.scene.control.ToolBar;
+import javafx.scene.paint.Color;
 
 
 public class UToolBar extends ToolBar{
-    public UToolBar(App app){
+    public UBrushBox brushBox;
+    public UEraserBox eraserBox;
+    public UColorBox colorBox;
+    public UShaperBox shaperBox;
+    public UBucketBox bucketBox;
+    public UCurrentColorBox currentColorBox;
+    public URGBBox RGBBox;
+    public UFlipBox flipBox;
+    public UColorPickerBox colorPickerBox;
+    public App app;
+    public UToolBar(App a){
         super();
-        UBrushBox brushBox = new UBrushBox(app);
-        UEraserBox eraserBox = new UEraserBox(app);
-        UColorBox colorBox = new UColorBox(app);
-        UShaperBox shaperBox = new UShaperBox(app);
+        app = a;
+        brushBox = new UBrushBox(app);
+        eraserBox = new UEraserBox(app);
+        colorBox = new UColorBox(app);
+        shaperBox = new UShaperBox(app);
+        bucketBox = new UBucketBox(app);
+        currentColorBox = new UCurrentColorBox(app);
+        RGBBox = new URGBBox(app);
+        flipBox = new UFlipBox(app);
+        colorPickerBox = new UColorPickerBox(app);
 
-//        brushBox.prefHeightProperty().bind(this.heightProperty());
-//        eraserBox.prefHeightProperty().bind(this.heightProperty());
-//        colorBox.prefHeightProperty().bind(this.heightProperty());
-//        shaperBox.prefHeightProperty().bind(this.heightProperty());
         this.setMinHeight(120);
-        this.getItems().addAll(brushBox, new Separator(), eraserBox, new Separator(), colorBox, new Separator(), shaperBox);
+        this.getItems().addAll(
+                brushBox, new Separator(),
+                bucketBox, new Separator(),
+                eraserBox, new Separator(),
+                colorPickerBox, new Separator(),
+                colorBox, new Separator(),
+                currentColorBox, new Separator(),
+                shaperBox, new Separator(),
+                RGBBox, new Separator(),
+                flipBox);
+    }
+
+    public void setColor(Color color){
+        app.currentColor = color;
+        currentColorBox.circle.setFill(color);
     }
 }

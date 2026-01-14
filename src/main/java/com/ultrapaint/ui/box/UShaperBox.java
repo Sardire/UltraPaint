@@ -32,6 +32,6 @@ public class UShaperBox extends VBox {
         label.setAlignment(Pos.CENTER);
         Region spacer = new Region();
         VBox.setVgrow(spacer, Priority.ALWAYS);
-        this.getChildren().addAll(ltf, spacer, label);
+        this.getChildren().addAll(spacer, ltf, label);
     }
 }
