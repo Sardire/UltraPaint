@@ -1,2 +1,2 @@
 # UltraPaint
-Paint but gonna be better (someday)
+Ứng dụng đồ họa đơn giản
