@@ -22,7 +22,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
+      <version>4.13.1</version>
       <scope>test</scope>
     </dependency>
 
@@ -37,6 +37,11 @@
         <artifactId>javafx-fxml</artifactId>
         <version>${javafx.version}</version>
     </dependency>
+      <dependency>
+          <groupId>org.openjfx</groupId>
+          <artifactId>javafx-swing</artifactId>
+          <version>${javafx.version}</version>
+      </dependency>
 
     <!-- https://mvnrepository.com/artifact/org.kordamp.ikonli/ikonli-core -->
     <dependency>

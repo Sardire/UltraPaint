@@ -1,4 +1,4 @@
-package com.ultrapaint.core;
+package com.ultrapaint.core.tool;
 import com.ultrapaint.App;
 
 public abstract class Tool {

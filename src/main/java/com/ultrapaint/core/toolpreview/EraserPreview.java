@@ -19,6 +19,10 @@ public class EraserPreview extends Preview {
     public void setOnPressed(App app, double x, double y){}
 
     public void setOnMoved(App app, double x, double y){
+        if (y < 0){
+            eraserPreview.setVisible(false);
+            return;
+        }
         eraserPreview.setVisible(true);
         eraserPreview.setWidth(app.currentEraserSize);
         eraserPreview.setHeight(app.currentEraserSize);

@@ -16,6 +16,7 @@ public class RectanglePreview extends Preview {
     public void setOnPressed(App app, double x, double y){
         prevX = x;
         prevY = y;
+        setCoordinate(x, y);
         rectanglePreview.setStroke(app.currentColor);
         rectanglePreview.setFill(Color.TRANSPARENT);
         rectanglePreview.setStrokeWidth(app.currentLineSize);
@@ -35,7 +36,11 @@ public class RectanglePreview extends Preview {
         rectanglePreview.setVisible(false);
         app.gc.setStroke(app.currentColor);
         app.gc.setLineWidth(app.currentLineSize);
-        app.gc.strokeRect(Math.min(prevX, x), Math.min(prevY, y), Math.abs(x - prevX), Math.abs(y - prevY));
+        app.gc.strokeRect(
+                Math.min(prevX, x),
+                Math.min(prevY, y),
+                Math.abs(x - prevX),
+                Math.abs(y - prevY));
     }
 
     @Override

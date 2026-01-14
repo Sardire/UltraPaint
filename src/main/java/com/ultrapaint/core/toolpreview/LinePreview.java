@@ -1,10 +1,11 @@
 package com.ultrapaint.core.toolpreview;
 
 import com.ultrapaint.App;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
 public class LinePreview extends Preview{
-    double prevX, prevY;
+    int prevX, prevY;
     private final Line linePreview = new Line(0,0,1, 1);
     public LinePreview(App app){
         linePreview.setVisible(false);
@@ -12,8 +13,8 @@ public class LinePreview extends Preview{
     }
     @Override
     public void setOnPressed(App app, double x, double y) {
-        prevX = x;
-        prevY = y;
+        prevX = (int)x;
+        prevY = (int)y;
         linePreview.setStrokeWidth(app.currentLineSize);
         linePreview.setStroke(app.currentColor);
         linePreview.setVisible(true);

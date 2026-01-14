@@ -3,30 +3,35 @@ package com.ultrapaint.ui.box;
 import com.ultrapaint.constants.ShapeID;
 import com.ultrapaint.ui.button.UShaperButton;
 import com.ultrapaint.ui.textfield.LineSizeTF;
-import javafx.scene.layout.HBox;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
+import javafx.scene.layout.*;
 import com.ultrapaint.App;
-import javafx.scene.layout.VBox;
 
-public class UShaperBox extends HBox {
+public class UShaperBox extends VBox {
     ShapeID[] shapeList = {
             ShapeID.RECTANGLE, ShapeID.LINE, ShapeID.ELLIPSE,
     };
     public UShaperBox(App app){
         super();
-        app.toolbar.getItems().add(this);
 
         for (int i = 0;i < shapeList.length; i++){
-            VBox vBox = new VBox();
-            this.getChildren().add(vBox);
+            HBox hBox = new HBox();
+            this.getChildren().add(hBox);
         }
 
         for (int i = 0; i < shapeList.length;i++){
-            VBox currentVBox = (VBox)this.getChildren().get(i / 3);
+            HBox currentHBox = (HBox)this.getChildren().get(i / 3);
             UShaperButton shapeButton = new UShaperButton(app, shapeList[i]);
-            currentVBox.getChildren().add(shapeButton);
+            currentHBox.getChildren().add(shapeButton);
         }
 
-        VBox v = new VBox(new LineSizeTF(app, "Size"));
-        this.getChildren().add(v);
+        HBox ltf = new HBox(new LineSizeTF(app, "Size"));
+        HBox label = new HBox(new Label("Shape"));
+        ltf.setAlignment(Pos.CENTER);
+        label.setAlignment(Pos.CENTER);
+        Region spacer = new Region();
+        VBox.setVgrow(spacer, Priority.ALWAYS);
+        this.getChildren().addAll(spacer, ltf, label);
     }
 }

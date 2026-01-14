@@ -12,6 +12,8 @@ public class UColorButton extends UButton{
         circle.setStroke(Color.DARKGRAY);
         circle.setStrokeWidth(1);
         this.setGraphic(circle);
-        this.setOnMouseClicked(e -> app.currentColor = color);
+        this.setOnMouseClicked(e -> {
+            app.toolbar.setColor(color);
+        });
     }
 }
